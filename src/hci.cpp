@@ -1786,7 +1786,8 @@ static void intAddObjectStats(BASE_OBJECT *psObj, UDWORD id)
 	{
 		fillTemplateList(apsTemplateList, (STRUCTURE *)psObj);
 		numStatsListEntries = apsTemplateList.size();
-		ppsStatsList = (BASE_STATS **)&apsTemplateList[0];  // FIXME Ugly cast, and is undefined behaviour (strict-aliasing violation) in C/C++.
+		if(apsTemplateList.capacity()>0)
+			ppsStatsList = (BASE_STATS **)&apsTemplateList[0];  // FIXME Ugly cast, and is undefined behaviour (strict-aliasing violation) in C/C++.
 	}
 
 	/*have to calculate the list each time the Topic button is pressed

@@ -25,7 +25,14 @@
 #include "version.h"
 #include "stringdef.h"
 
-#include "src/autorevision.h"  // Apparently must add the "src/" so make doesn't needlessly recompile version.cpp every time.
+//#include "src/autorevision.h"  // Apparently must add the "src/" so make doesn't needlessly recompile version.cpp every time.
+#define VCS_TYPE		"${VCS_TYPE}"
+#define VCS_BASENAME	"${VCS_BASENAME}"
+#define VCS_BRANCH		"${VCS_BRANCH}"
+#define VCS_TAG			"${VCS_TAG}"
+#define VCS_EXTRA       "${VCS_EXTRA}" 
+#define VCS_FULL_HASH		"${VCS_FULL_HASH}"
+#define VCS_SHORT_HASH		"${VCS_SHORT_HASH}"
 
 static const char vcs_branch_cstr[] = VCS_BRANCH;
 static const char vcs_tag[] = VCS_TAG;

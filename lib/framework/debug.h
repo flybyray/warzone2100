@@ -258,7 +258,7 @@ bool debug_enable_switch(const char *str);
  *
  * Only outputs if debugging of part was formerly enabled with debug_enable_switch.
  */
-#define debug(part, ...) do { if (enabled_debug[part]) _debug(__LINE__, part, __FUNCTION__, __VA_ARGS__); } while(0)
+#define debug(part, ...) do { if (true) _debug(__LINE__, part, __FUNCTION__, __VA_ARGS__); } while(0)
 void _debug(int line, code_part part, const char *function, const char *str, ...) WZ_DECL_FORMAT(printf, 4, 5);
 
 #define debugBacktrace(part, ...) do { if (enabled_debug[part]) { _debug(__LINE__, part, __FUNCTION__, __VA_ARGS__); _debugBacktrace(part); }} while(0)

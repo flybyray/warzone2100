@@ -4296,11 +4296,16 @@ QScriptValue js_stats(QScriptContext *context, QScriptEngine *engine)
 	int type = callee.property("type").toInt32();
 	int player = callee.property("player").toInt32();
 	unsigned index = callee.property("index").toUInt32();
-	QString name = callee.property("name").toString();
+	QString name = "unknown";
+	if (callee.property("name").isValid()) {
+		name = callee.property("name").toString();
+	}
 	if (context->argumentCount() == 1) // setter
 	{
 		int value = context->argument(0).toInt32();
-		syncDebug("stats[p%d,t%d,%s,i%d] = %d", player, type, name.toStdString().c_str(), index, value);
+		std::string nameToStdString = name.toUtf8().constData();
+		const char *nameToStdStringC_str = nameToStdString.c_str();
+		syncDebug("stats[p%d,t%d,%s,i%d] = %d", player, type, nameToStdStringC_str, index, value);
 		if (type == COMP_BODY)
 		{
 			SCRIPT_ASSERT(context, index < numBodyStats, "Bad index");

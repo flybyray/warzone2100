@@ -337,7 +337,7 @@ void drawShape(BASE_OBJECT *psObj, iIMDShape *strImd, int colour, PIELIGHT build
 	}
 	if (strImd->objanimframes)
 	{
-		const int elapsed = graphicsTime - psObj->timeAnimationStarted;
+		const int elapsed = GAME_TICKS_PER_UPDATE + graphicsTime - psObj->timeAnimationStarted;
 		const int frame = (elapsed / strImd->objanimtime) % strImd->objanimframes;
 		const ANIMFRAME &state = strImd->objanimdata[frame];
 		if (state.scale.x == -1.0f) // disabled frame, for implementing key frame animation
